@@ -10,11 +10,17 @@ class Image {
   }
 
   getHeadAddress(x, y) {
+    if(x < 0 || y < 0 || x >= this.width || y >= this.width) {
+      return null;
+    }
     return 4 * (x + this.width * y);
   }
 
   getRGBA(x, y) {
     let p = this.getHeadAddress(x, y);
+    if (p === null) {
+      return new Color(0, 0, 0, 255);
+    }
     return new Color(this.data.data[p], this.data.data[p + 1], this.data.data[p + 2], this.data.data[p + 3]);
   }
 

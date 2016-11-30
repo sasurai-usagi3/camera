@@ -8,6 +8,7 @@ window.addEventListener("load", () => {
     let update = () => {
       requestAnimationFrame(update);
       context.clearRect(0, 0, result.width, result.height);
+      context.drawImage(target, 0, 0, result.width, result.height);
       ctracker.draw(result);
     };
     target.src = window.URL.createObjectURL(s);

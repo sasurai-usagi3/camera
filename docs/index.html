@@ -12,8 +12,14 @@
 </head>
 <body>
   <div id="container">
-    <video id="target" width="800" height="600" autoplay></video>
-    <canvas id="result" width="800" height="600"></canvas>
+    <div id="frame">
+      <video id="target" width="800" height="600" autoplay></video>
+      <canvas id="result" width="800" height="600" hidden></canvas>
+    </div>
+    <div>
+      <input id="mode" type="checkbox">
+      <label for="mode">id</label>
+    </div>
   </div>
 </body>
 </html>

@@ -1,10 +1,39 @@
-#container {
-  position: relative;
+html, body {
+  margin: 0;
 }
 
-#container > * {
+#container {
+  margin: 0 auto;
+  width: 800px;
+}
+
+#frame {
+  position: relative;
+  height: 600px;
+}
+
+#frame > * {
   position: absolute;
   top: 0;
   left 0;
   transform: RotateY(180deg);
+}
+
+#mode {
+  display: none;
+}
+
+#mode + label {
+  margin-top: 2px;
+  display: block;
+  height: 90px;
+  background-color: #777;
+  cursor: pointer;
+  border-radius: 3px;
+  border: 4px inset #555;
+}
+
+#mode:checked + label {
+  background-color: #ff6;
+  border: 4px inset #ee5;
 }

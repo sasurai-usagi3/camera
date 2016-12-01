@@ -1,25 +1,25 @@
 class Image {
   constructor(canvas, context, width, height, px, py) {
-    this.width = width;
-    this.height = height;
+    this.width = Math.floor(width);
+    this.height = Math.floor(height);
     if(px === undefined || py === undefined) {
       this.data = context.createImageData(this.width, this.height);
     } else if(px !== undefined && py != undefined) {
-      this.data = context.getImageData(px, py, this.width, this.height);
+      this.data = context.getImageData(Math.floor(px), Math.floor(py), this.width, this.height);
     }
   }
 
   getHeadAddress(x, y) {
-    if(x < 0 || y < 0 || x >= this.width || y >= this.width) {
+    if(x < 0 || y < 0 || x >= this.width || y >= this.height) {
       return null;
     }
-    return 4 * (x + this.width * y);
+    return 4 * (Math.floor(x) + this.width * Math.floor(y));
   }
 
   getRGBA(x, y) {
     let p = this.getHeadAddress(x, y);
     if (p === null) {
-      return new Color(0, 0, 0, 255);
+      return new Color(0, 0, 0, 0);
     }
     return new Color(this.data.data[p], this.data.data[p + 1], this.data.data[p + 2], this.data.data[p + 3]);
   }

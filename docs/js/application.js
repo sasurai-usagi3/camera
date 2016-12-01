@@ -37,10 +37,13 @@ let expand_eye = (canvas, context, center, positions) => {
 window.addEventListener("load", () => {
   let deviceNavigator = navigator.mediaDevices.getUserMedia({ audio: false, video: true });
   let stamp1 = document.createElement("img"), stamp2 = document.createElement("img"), stamp3 = document.createElement("img");
+  let button = document.getElementById("mode");
+  let label = document.getElementById("label");
 
   stamp1.src = "./img/1.png";
   stamp2.src = "./img/2.png";
   stamp3.src = "./img/3.png";
+  button.addEventListener("click", () => label.textContent = (button.checked)? "ガイドをOFFにする" : "ガイドをONにする");
   deviceNavigator.then((s) => {
     let target = document.getElementById("target");
     let ctracker = new clm.tracker();
@@ -60,7 +63,7 @@ window.addEventListener("load", () => {
       context.drawImage(stamp1, positions[16][0] - 40, positions[16][1] - 350, 75, 250);
       context.drawImage(stamp3, positions[3][0] - 20, positions[3][1] - 80, 100, 100);
       context.drawImage(stamp3, positions[11][0] - 90, positions[11][1] - 80, 100, 100);
-      if(flag) {
+      if(button.checked) {
         ctracker.draw(result);
       }
     };
@@ -69,4 +72,5 @@ window.addEventListener("load", () => {
     ctracker.start(target);
     update();
   });
+
 });

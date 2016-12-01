@@ -24,16 +24,23 @@ html, body {
 }
 
 #mode + label {
-  margin-top: 2px;
-  display: block;
-  height: 90px;
   background-color: #777;
-  cursor: pointer;
-  border-radius: 3px;
   border: 4px inset #555;
 }
 
 #mode:checked + label {
   background-color: #ff6;
   border: 4px inset #ee5;
+}
+
+#label {
+  margin-top: 2px;
+  display: block;
+  height: 90px;
+  text-align: center;
+  font-size: 50px;
+  cursor: pointer;
+  border-radius: 3px;
+  box-sizing: border-box;
+  padding-top: 5px;
 }

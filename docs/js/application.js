@@ -36,6 +36,11 @@ let expand_eye = (canvas, context, center, positions) => {
 
 window.addEventListener("load", () => {
   let deviceNavigator = navigator.mediaDevices.getUserMedia({ audio: false, video: true });
+  let stamp1 = document.createElement("img"), stamp2 = document.createElement("img"), stamp3 = document.createElement("img");
+
+  stamp1.src = "./img/1.png";
+  stamp2.src = "./img/2.png";
+  stamp3.src = "./img/3.png";
   deviceNavigator.then((s) => {
     let target = document.getElementById("target");
     let ctracker = new clm.tracker();
@@ -51,6 +56,10 @@ window.addEventListener("load", () => {
       let right_eye_positions = [positions[23], positions[24], positions[25], positions[26], positions[63], positions[64], positions[65], positions[66]];
       expand_eye(result, context, positions[32], left_eye_positions);
       expand_eye(result, context, positions[27], right_eye_positions);
+      context.drawImage(stamp1, positions[20][0] - 40, positions[20][1] - 350, 75, 250);
+      context.drawImage(stamp1, positions[16][0] - 40, positions[16][1] - 350, 75, 250);
+      context.drawImage(stamp3, positions[3][0] - 20, positions[3][1] - 80, 100, 100);
+      context.drawImage(stamp3, positions[11][0] - 90, positions[11][1] - 80, 100, 100);
       if(flag) {
         ctracker.draw(result);
       }

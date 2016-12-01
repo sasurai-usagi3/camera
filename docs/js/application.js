@@ -46,7 +46,7 @@ window.addEventListener("load", () => {
     let ctracker = new clm.tracker();
     let result = document.getElementById("result");
     let context = result.getContext("2d");
-    flag = true;
+    flag = false;
     let update = () => {
       requestAnimationFrame(update);
       let positions = ctracker.getCurrentPosition();
